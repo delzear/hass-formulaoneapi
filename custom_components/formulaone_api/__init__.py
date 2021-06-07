@@ -1,1 +1,1 @@
-"""The NHL API integration."""
+"""The Formula One API integration."""

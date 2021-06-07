@@ -5,7 +5,7 @@ https://github.com/JayBlackedOut/hass-nhlapi/blob/master/README.md
 
 import logging
 from datetime import timedelta, datetime as dt
-import pyergast
+from formula1 import F1
 import voluptuous as vol
 
 from homeassistant.components.sensor import PLATFORM_SCHEMA
@@ -91,10 +91,14 @@ class FormulaOneSensor(Entity):
     def get_race_data(self):
         """Get the latest data from the http://ergast.com/ via pyErgast."""
         # Get race info
+
+        f1 = F1()
         now = dt.datetime.now()
-        races = pyergast.get_schedule(now.year)
-        drivers = pyergast.driver_standings(now.year)
-        constructors = pyergast.drivconstructor_standingser_standings(now.year)
+        races = f1.current_schedule().json
+        drivers = f1.season_schedule(season=now.year).json
+        constructors = f1.constructor_standings(season=now.year).xml
+
+        # f1.race_standings(season=now.year).json
 
         # Localize the returned UTC time values.
         if races['next_race_datetime'] != "None":
