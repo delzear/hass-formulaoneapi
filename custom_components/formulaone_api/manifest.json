@@ -4,6 +4,6 @@
   "name": "Formula One API",
   "documentation": "https://github.com/delzear/formulaone_api",
   "dependencies": [],
-  "codeowners": ["@jayblackedout", "@delzear"],
+  "codeowners": ["@delzear"],
   "requirements": ["pypyergast"]
 }
