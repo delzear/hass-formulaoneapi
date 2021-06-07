@@ -85,6 +85,51 @@ class ErgastResponse(object):
         if self._text is None:
             self._text = self.make_request(".xml")
         return self._text.text
+
+@dataclass
+class F1(object):
+    secure: Optional[bool] = False
+    offset: Optional[int] = None
+    limit: Optional[int] = None
+
+    __all__ = {
+        "all_drivers": "drivers",
+        "all_circuits": "circuits",
+        "all_seasons": "seasons",
+        "current_schedule": "current",
+        "season_schedule": "{season}",
+        "all_constructors": "constructors",
+        "race_standings": "{season}/driverStandings",
+        "constructor_standings": "{season}/constructorStandings",
+        "driver_season": "{season}/drivers",
+    }
+
+    def __getattr__(self, attr):
+        path = self.__all__.get(attr)
+        if path is None:
+            raise AttributeError
+
+        def outer(path):
+            def inner(**kwargs):
+                url = self._build_url(path, **kwargs)
+                return ErgastResponse(url)
+
+            return inner
+
+        return outer(self.__all__[attr])
+
+    def random(self, **kwargs):
+        applicable_actions = []
+        for action in self.__all__.keys():
+            applicable_actions.append(action)
+        choice = getattr(self, random.choice(applicable_actions))
+        return choice(**kwargs)
+
+    def _build_url(self, path, **kwargs) -> str:
+        url = "{protocol}://ergast.com/api/f1/{path}".format(
+            protocol="https" if self.secure else "http", path=path.format(**kwargs)
+        )
+        return url
         
 class FormulaOneSensor(Entity):
     """Representation of a Formula One sensor."""
@@ -136,10 +181,10 @@ class FormulaOneSensor(Entity):
     def get_race_data(self):
         """Get the latest data from the http://ergast.com/ via pyErgast."""
         # Get race info
-
         f1 = F1()
+
         now = dt.datetime.now()
-        races = f1.current_schedule().json
+        races = f1.current_schedule()
         drivers = f1.season_schedule(season=now.year).json
         constructors = f1.constructor_standings(season=now.year).xml
 
