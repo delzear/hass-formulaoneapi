@@ -1,8 +1,8 @@
 {
-  "domain": "nhl_api",
+  "domain": "formulaone_api",
   "version": "0.1.0",
   "name": "Formula One API",
-  "documentation": "https://github.com/delzear/hass-formulaone",
+  "documentation": "https://github.com/delzear/formulaone_api",
   "dependencies": [],
   "codeowners": ["@jayblackedout", "@delzear"],
   "requirements": ["pypyergast"]
