@@ -1,17 +1,11 @@
 # Frontend Example
-The goal is to eventually have a custom lovelace card to display the sensor's information. In the meantime, a makeshift scdisplayoreboard can be created using template Markdowns. Follow the steps below to get a result similar to this:
+The goal is to eventually have a custom lovelace card to display the sensor's information. In the meantime, a makeshift scdisplayoreboard can be created using template Markdowns.  The font is the Official Formula One and is not be the default. Follow the steps below to get a result similar to this:
 
 To display the next race:
 
 ![Next Race](./next_race.png) 
 ```
 - type: markdown
-  card_mod:
-    style:
-      ha-markdown$: |
-        * {
-          font-family: FormulaOne, "Titillium Web";
-        }
   content: >-
     {% set ns = namespace(found=false) %} {% for race in
     states.sensor.formula_one_sensor.attributes.races %}  {% if not (ns.found) %}
@@ -36,9 +30,6 @@ type: markdown
 card_mod:
   style:
     ha-markdown$: |
-      * {
-        font-family: FormulaOne, "Titillium Web";
-      }
       table {
         width: 100%;
         border-spacing: 0;
@@ -94,9 +85,6 @@ type: markdown
 card_mod:
   style:
     ha-markdown$: |
-      * {
-        font-family: FormulaOne, "Titillium Web";
-      }
       table {
         width: 100%;
         border-spacing: 0;
