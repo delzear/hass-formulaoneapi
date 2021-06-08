@@ -33,9 +33,10 @@ The sensor will expose 3 state attributes:
 
 | state                  | description                                                                               |
 |------------------------|-------------------------------------------------------------------------------------------|
-| Races                  | Array of all the races of the current championship season                                 |
-| Drivers                | Sorted array of all drivers of the current championship season ordered by descending points |
-| Constructors           | Sorted array of all constructors of the current championship season ordered by descending points |
+| next_race              | The Next race of the current championship season                                          |
+| races                  | Array of all the races of the current championship season                                 |
+| drivers                | Sorted array of all drivers of the current championship season ordered by descending points |
+| constructors           | Sorted array of all constructors of the current championship season ordered by descending points |
 
 The sensor will return the following state attributes whether or not a game is in progress:
 

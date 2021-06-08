@@ -1,5 +1,5 @@
 """"
-Based on the good work from #JayBlackedOut
+Based on the good work from @JayBlackedOut
 https://github.com/JayBlackedOut/hass-nhlapi/blob/master/README.md
 """
 
@@ -8,6 +8,7 @@ from datetime import timedelta, datetime as dt
 import random
 import requests
 import voluptuous as vol
+import json
 
 from typing import Optional
 from dataclasses import dataclass
@@ -191,9 +192,11 @@ class FormulaOneSensor(Entity):
         next_race = None
 
         found = False
-        for race in races:
-            if (not found):  
-                if (dt.strptime(race.date, '%y-%m-%d') >= dt.today()):
+        for race in races['MRData']['RaceTable']['Races']:
+            if (not found): 
+                print(race)
+                #r = json.loads(race)
+                if (dt.strptime(race['date'], '%Y-%m-%d') >= dt.today()):
                     next_race = race
                     found = True
 
@@ -212,9 +215,9 @@ class FormulaOneSensor(Entity):
         all_attr = self.get_race_data()
 
         # Set sensor state attributes.
-        if all_attr.next_race == None:
+        if all_attr['next_race'] == None:
             self._state = 'None'
-        elif dt.strptime(all_attr.next_race.date, '%y-%m-%d') == dt.today():
+        elif dt.strptime(all_attr['next_race']['date'], '%Y-%m-%d') == dt.today():
             self._state = 'Race Day'
         else:
             self._state = 'Scheduled'
