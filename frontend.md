@@ -6,20 +6,25 @@ To display the next race:
 ![Next Race](./next_race.png) 
 ```
 - type: markdown
+  card_mod:
+    style:
+      ha-markdown$: |
+        * {
+          font-family: FormulaOne, "Titillium Web";
+        }
   content: >-
-    {% set ns = namespace(found=false) %} {% for race in
-    states.sensor.formula_one_sensor.attributes.races %}  {% if not (ns.found) %}
-    {% if (as_timestamp(race.date) > as_timestamp(now())) %} <h1><img height="22"
-    src="https://www.countries-ofthe-world.com/flags-normal/flag-of-{{race.Circuit.Location.country}}.png">&nbsp;
-    {{ race.raceName }}</h1>
+    {% set nr = states.sensor.formula_one_sensor.attributes.next_race %}
+    {% if not(nr == None) %} 
+    <h1><img height="22" src="https://www.countries-ofthe-world.com/flags-normal/flag-of-{{nr.Circuit.Location.country}}.png">&nbsp;
+    {{ nr.raceName }}</h1>
 
-    <small>{{ as_timestamp(race.date + ' ' + race.time) |
-    timestamp_custom("%Y-%m-%d %H:%M") }}</small>
+    <small>{{ as_timestamp(nr.date + ' ' + nr.time) | timestamp_custom("%Y-%m-%d %H:%M") }}</small>
 
-    <a target="_new" href="{{race.Circuit.url}}"><img width="100%"
-    src="https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/{{race.Circuit.Location.country}}%20carbon.png.transform/4col/image.png"></a>
-    {{race.Circuit.circuitName}} {% set ns.found = true %} {% endif %} {% endif %}
-    {% endfor %}
+    <a target="_new" href="{{nr.Circuit.url}}">
+      <img width="100%" src="https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/{{nr.Circuit.Location.country}}%20carbon.png.transform/4col/image.png">
+    </a>
+    {{nr.Circuit.circuitName}}
+    {% endif %}
 ```
 
 To display the Driver standings:
