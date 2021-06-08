@@ -1,5 +1,5 @@
 # Frontend Example
-The goal is to eventually have a custom lovelace card to display the sensor's information. In the meantime, a makeshift scdisplayoreboard can be created using template Markdowns.  The font is the Official Formula One and is not be the default. Follow the steps below to get a result similar to this:
+The goal is to eventually have a custom lovelace card to display the sensor's information. In the meantime, a makeshift display can be created using template Markdowns.  The font is the Official Formula One and is not the default. Follow the steps below to get a result similar to this:
 
 To display the next race:
 
