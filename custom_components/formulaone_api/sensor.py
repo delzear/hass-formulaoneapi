@@ -180,7 +180,7 @@ class FormulaOneSensor(Entity):
         track_point_in_time(self.hass, self.timer, nexttime)
 
     def get_race_data(self):
-        """Get the latest data from the http://ergast.com/ via pyErgast."""
+        """Get the latest data from the http://ergast.com/ via a custom formulaonepy."""
         # Get race info
         f1 = F1()
 
@@ -188,9 +188,18 @@ class FormulaOneSensor(Entity):
         races = f1.current_schedule().json
         drivers = f1.driver_standings(season=now.year).json
         constructors = f1.constructor_standings(season=now.year).json
+        next_race = None
+
+        found = False
+        for race in races:
+            if (not found):  
+                if (dt.strptime(race.date, '%y-%m-%d') >= dt.today()):
+                    next_race = race
+                    found = True
 
         # # Merge all attributes to a single dict.
         all_attr = {
+            'next_race': next_race,
             'races': races['MRData']['RaceTable']['Races'],
             'drivers': drivers['MRData']['StandingsTable']['StandingsLists'][0]['DriverStandings'],
             'constructors': constructors['MRData']['StandingsTable']['StandingsLists'][0]['ConstructorStandings']
@@ -203,7 +212,13 @@ class FormulaOneSensor(Entity):
         all_attr = self.get_race_data()
 
         # Set sensor state attributes.
-        self._state = 'Scheduled'
+        if all_attr.next_race == None:
+            self._state = 'None'
+        elif dt.strptime(all_attr.next_race.date, '%y-%m-%d') == dt.today():
+            self._state = 'Race Day'
+        else:
+            self._state = 'Scheduled'
+
         self._state_attributes = all_attr
 
         return self._state
