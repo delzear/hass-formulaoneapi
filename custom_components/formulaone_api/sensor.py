@@ -101,6 +101,7 @@ class F1(object):
         "all_constructors": "constructors",
         "race_standings": "{season}/driverStandings",
         "constructor_standings": "{season}/constructorStandings",
+        "driver_standings": "{season}/driverStandings",
         "driver_season": "{season}/drivers",
     }
 
@@ -184,56 +185,25 @@ class FormulaOneSensor(Entity):
         f1 = F1()
 
         now = dt.now()
-        races = f1.current_schedule()
-        drivers = f1.season_schedule(season=now.year).json
-        constructors = f1.constructor_standings(season=now.year).xml
+        races = f1.current_schedule().json
+        drivers = f1.driver_standings(season=now.year).json
+        constructors = f1.constructor_standings(season=now.year).json
 
-        # f1.race_standings(season=now.year).json
-
-        # Localize the returned UTC time values.
-        if races['next_race_datetime'] != "None":
-            dttm = dt.strptime(races['next_race_datetime'],
-                               '%Y-%m-%dT%H:%M:%SZ')
-            dttm_local = dt_util.as_local(dttm)
-            time = {'next_race_time': dttm_local.strftime('%-I:%M %p')}
-            # If next race is scheduled Today or Tomorrow,
-            # return "Today" or "Tomorrow". Else, return
-            # the actual date of the next race.
-            next_race_date = dttm_local.strftime('%B %-d, %Y')
-            now = dt_util.as_local(dt.now())
-            pick = {
-                now.strftime("%Y-%m-%d"): "Today,",
-                (now + timedelta(days=1)).strftime("%Y-%m-%d"): "Tomorrow,"
-            }
-            race_date = pick.get(dttm_local.strftime("%Y-%m-%d"),
-                                 next_race_date)
-        else:
-            time = {
-                'next_race_time': ''
-            }
-            race_date = 'No race Scheduled'
-            next_race_date = ''
-        next = {'next_race_date': next_race_date}
-        # Merge all attributes to a single dict.
+        # # Merge all attributes to a single dict.
         all_attr = {
-            **races,
-            **drivers,
-            **constructors,
-            **next
-            }
-        next_date_time = race_date + " " + time['next_race_time']
-        return all_attr, next_date_time
+            'races': races['MRData']['RaceTable']['Races'],
+            'drivers': drivers['MRData']['StandingsTable']['StandingsLists'][0]['DriverStandings'],
+            'constructors': constructors['MRData']['StandingsTable']['StandingsLists'][0]['ConstructorStandings']
+        }
+
+        return all_attr
 
     def set_state(self):
         """Set sensor state to race state and set polling interval."""
-        all_attr = self.get_race_data()[0]
-        next_date_time = self.get_race_data()[1]
-        if all_attr.get('race_state') == "Scheduled":
-            # Display next race date and time if none today.
-            self._state = next_date_time
-        else:
-            self._state = all_attr.get('race_state', next_date_time)
+        all_attr = self.get_race_data()
+
         # Set sensor state attributes.
+        self._state = 'Scheduled'
         self._state_attributes = all_attr
 
         return self._state
