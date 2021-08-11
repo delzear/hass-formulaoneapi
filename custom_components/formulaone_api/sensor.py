@@ -190,13 +190,14 @@ class FormulaOneSensor(Entity):
         drivers = f1.driver_standings(season=now.year).json
         constructors = f1.constructor_standings(season=now.year).json
         next_race = None
-
+        yesterday = dt.today() - timedelta(hours=24)
+        
         found = False
         for race in races['MRData']['RaceTable']['Races']:
             if (not found): 
                 print(race)
                 #r = json.loads(race)
-                if (dt.strptime(race['date'], '%Y-%m-%d') >= dt.today()):
+                if (dt.strptime(race['date'], '%Y-%m-%d') >= yesterday):
                     next_race = race
                     found = True
 
