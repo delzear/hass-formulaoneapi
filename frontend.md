@@ -70,8 +70,7 @@ content: |-
       </tr>
     </thead>
     <tbody>
-  {% for driver in states.sensor.formula_one_sensor.attributes.drivers %} 
-      <tr>
+  {% for driver in states.sensor.formula_one_sensor.attributes.drivers %} <tr>
           <td>{{driver.position}}</td>
           <td>{{driver.Driver.code}}</td>
           <td>{{driver.Driver.givenName }} {{driver.Driver.familyName }}</td>
@@ -124,8 +123,7 @@ content: |-
       </tr>
     </thead>
     <tbody>
-  {% for driver in states.sensor.formula_one_sensor.attributes.constructors %} 
-      <tr>
+  {% for driver in states.sensor.formula_one_sensor.attributes.constructors %} <tr>
           <td>{{driver.position}}</td>
           <td>{{driver.Constructor.name }}</td>
           <td>{{driver.points}}</td>
