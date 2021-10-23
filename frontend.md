@@ -3,7 +3,7 @@ The goal is to eventually have a custom lovelace card to display the sensor's in
 
 To display the next race:
 
-![Next Race](./next_race.png) 
+![Next Race](./next-race.jpg) 
 ```
   type: markdown
   card_mod:
