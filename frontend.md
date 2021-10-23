@@ -18,7 +18,7 @@ To display the next race:
     <h1><img height="22" src="https://www.countries-ofthe-world.com/flags-normal/flag-of-{{nr.Circuit.Location.country}}.png">&nbsp;
     {{ nr.raceName }}</h1>
 
-    <small>{{ as_timestamp(nr.date + ' ' + nr.time) | timestamp_custom("%Y-%m-%d %H:%M") }}</small>
+    <small>{{ as_timestamp(nr.date + ' ' + nr.time) | timestamp_custom("%H:%M %d-%m-%Y ") }}</small>
 
     <a target="_new" href="{{nr.Circuit.url}}">
       <img width="100%" src="https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/{{nr.Circuit.Location.country}}_Circuit.png.transform/7col/image.png">
