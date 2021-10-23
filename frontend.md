@@ -5,7 +5,7 @@ To display the next race:
 
 ![Next Race](./next_race.png) 
 ```
-- type: markdown
+  type: markdown
   card_mod:
     style:
       ha-markdown$: |
