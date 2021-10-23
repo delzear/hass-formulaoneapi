@@ -100,7 +100,8 @@ class F1(object):
         "current_schedule": "current",
         "season_schedule": "{season}",
         "all_constructors": "constructors",
-        "race_standings": "{season}/driverStandings",
+        "race_results": "{season}/last/results",
+        "qualifying_results": "{season}/next/qualifying",
         "constructor_standings": "{season}/constructorStandings",
         "driver_standings": "{season}/driverStandings",
         "driver_season": "{season}/drivers",
@@ -189,6 +190,8 @@ class FormulaOneSensor(Entity):
         races = f1.current_schedule().json
         drivers = f1.driver_standings(season=now.year).json
         constructors = f1.constructor_standings(season=now.year).json
+        qualifying = f1.qualifying_results(season=now.year).json
+        results = f1.race_results(season=now.year).json
         next_race = None
 
         found = False
@@ -205,7 +208,9 @@ class FormulaOneSensor(Entity):
             'next_race': next_race,
             'races': races['MRData']['RaceTable']['Races'],
             'drivers': drivers['MRData']['StandingsTable']['StandingsLists'][0]['DriverStandings'],
-            'constructors': constructors['MRData']['StandingsTable']['StandingsLists'][0]['ConstructorStandings']
+            'constructors': constructors['MRData']['StandingsTable']['StandingsLists'][0]['ConstructorStandings'],
+            'qualifying': qualifying['MRData']['RaceTable']['Races'][0]['QualifyingResults'],
+            'results': results['MRData']['RaceTable']['Races'][0]['Results']
         }
 
         return all_attr
