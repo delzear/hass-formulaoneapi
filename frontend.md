@@ -3,28 +3,29 @@ The goal is to eventually have a custom lovelace card to display the sensor's in
 
 To display the next race:
 
-![Next Race](./next-race.jpg) 
+![Next Race](./next-race.png) 
 ```
-  type: markdown
-  card_mod:
-    style:
-      ha-markdown$: |
-        * {
-          font-family: FormulaOne, "Titillium Web";
-        }
-  content: >-
-    {% set nr = states.sensor.formula_one_sensor.attributes.next_race %}
-    {% if not(nr == None) %} 
-    <h1><img height="22" src="https://www.countries-ofthe-world.com/flags-normal/flag-of-{{nr.Circuit.Location.country}}.png">&nbsp;
-    {{ nr.raceName }}</h1>
+type: markdown
+content: >-
+  {% set nr = states.sensor.formula_one_sensor.attributes.next_race %} {% if
+  not(nr == None) %}  <h2><img height="25"
+  src="https://www.countries-ofthe-world.com/flags-normal/flag-of-{{nr.Circuit.Location.country}}.png">&nbsp;
+  {{ nr.raceName }}</h2>
 
-    <small>{{ as_timestamp(nr.date + ' ' + nr.time) | timestamp_custom("%H:%M %d-%m-%Y ") }}</small>
+  <small>Lokale tijd : {{ as_timestamp(nr.date + ' ' + nr.time) |
+  timestamp_custom("%H:%M op %d-%m-%Y ") }}</small>
 
-    <a target="_new" href="{{nr.Circuit.url}}">
-      <img width="100%" src="https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/{{nr.Circuit.Location.country}}_Circuit.png.transform/7col/image.png">
-    </a>
-    {{nr.Circuit.circuitName}}
-    {% endif %}
+  <a target="_new" href="{{nr.Circuit.url}}">
+    <img width="100%" src="https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/{{nr.Circuit.Location.country}}_Circuit.png.transform/7col/image.png">
+  </a> {{nr.Circuit.circuitName}} {% endif %}
+title: Next race
+card_mod:
+  style:
+    ha-markdown$: |
+      * {
+        font-family: FormulaOne, "Titillium Web";
+      }
+
 ```
 
 To display the Driver standings:
