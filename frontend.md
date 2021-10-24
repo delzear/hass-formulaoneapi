@@ -160,3 +160,56 @@ card_mod:
 To display the Race agenda:
 
 ![race agenda](./race-agenda.png)
+
+
+```
+type: markdown
+content: |-
+  <table>
+    <thead>
+      <tr>
+        <th>&nbsp;</th>
+        <th>race</th>
+        <th class="center">date</th>
+       <th class="center">time</th>
+      </tr>
+    </thead>
+    <tbody>
+  {% for races in states.sensor.formula_one_sensor.attributes.races %} <tr>
+          <td>{{races.round}}</td>
+          <td>{{races.raceName}}</td>
+          <td>{{races.date}}</td>
+          <td>{{races.time}}</td>
+      </tr>
+  {% endfor %}
+    </tbody>
+  </table>
+card_mod:
+  style:
+    ha-markdown$: |
+      table {
+        width: 100%;
+        border-spacing: 0;
+        border-collapse: separate;
+      }
+      th {
+        color: white;
+        background: black;
+      }
+      tr:nth-child(even) {
+        background-color: #dddddd;;
+        color: rgb(33,33,33);
+      }
+      td:nth-child(1) {
+        width: 50px;
+        text-align: center;
+      }
+      td:nth-child(2) {
+        text-align: left;
+      }
+      td:nth-child(3) {
+        width: 60px;
+        text-align: center;
+      }
+
+```
