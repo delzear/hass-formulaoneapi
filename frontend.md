@@ -52,7 +52,7 @@ content: |-
       <tr>
         <th>&nbsp;</th>
         <th colspan="2">Drivers</th>
-      <th class="center"> car nr</th>
+      <th class="center"> Car nr</th>
        <th class="center">Pts</th>
       <th class="center">Wins</th>
       </tr>
