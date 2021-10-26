@@ -167,9 +167,9 @@ content: |-
     <thead>
       <tr>
         <th>&nbsp;</th>
-        <th>race</th>
-        <th class="center">date</th>
-       <th class="center">time</th>
+        <th>Race</th>
+        <th class="center">Date</th>
+       <th class="center">Time</th>
       </tr>
     </thead>
     <tbody>
