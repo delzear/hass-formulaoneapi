@@ -39,8 +39,6 @@ card_mod:
       * {
         font-family: FormulaOne, "Titillium Web";
       }
-
-
 ```
 
 To display the Driver standings:
