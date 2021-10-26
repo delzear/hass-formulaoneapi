@@ -12,8 +12,8 @@ content: >-
   src="https://www.countries-ofthe-world.com/flags-normal/flag-of-{{nr.Circuit.Location.country}}.png">&nbsp; 
   {{ nr.round }} :  {{ nr.raceName }}</h2>
 
-  <small>Lokale tijd : {{ as_timestamp(nr.date + ' ' + nr.time) |
-  timestamp_custom("%H:%M op %d-%m-%Y ") }}</small>
+  <small>Local time : {{ as_timestamp(nr.date + ' ' + nr.time) |
+  timestamp_custom("%H:%M on %y-%m-%D ") }}</small>
 
   <a target="_new" href="{{nr.Circuit.url}}">
     <img width="100%" src="https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/{{nr.Circuit.Location.country}}_Circuit.png.transform/7col/image.png">
@@ -25,7 +25,7 @@ content: >-
 
   Race name : {{nr.raceName}}<br>
 
-  Circuitname : {{nr.Circuit.circuitName}}<br>
+  Circuit name : {{nr.Circuit.circuitName}}<br>
 
   Location: {{nr.Circuit.Location.country}}<br>
 
