@@ -28,7 +28,7 @@ CONF_NAME = 'name'
 CONF_SCAN_INTERVAL = 'scan_interval'
 
 DEFAULT_NAME = 'Formula One Sensor'
-DEFAULT_SCAN_INTERVAL = timedelta(seconds=1)
+DEFAULT_SCAN_INTERVAL = timedelta(seconds=600)
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Required(CONF_ID, default=0): cv.positive_int,
