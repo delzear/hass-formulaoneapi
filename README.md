@@ -1,5 +1,7 @@
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/custom-components/hacs)
 # Home Assistant Formula One API
+Formula One API will be down for the remaining of the season while I work on a solution to update the data and prevent polling the API. The terms and condition of the API prevent polling.
+
 Formula One API Integration Into Home Assistant: Bring live information the current season!
 
 ## Installation: Manual
