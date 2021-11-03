@@ -1,7 +1,8 @@
-**Pre-Alpha Release!** 
-
 ## Information:
 Track the status of the current Formula One Champioship!
+
+*** Temporarily deactivated the API calls as per Ergast’s request. We are working on a solution. ***
+
 
 ## Usage:
 Add to configuration.yaml:
