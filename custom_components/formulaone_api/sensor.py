@@ -128,10 +128,9 @@ class F1(object):
         return choice(**kwargs)
 
     def _build_url(self, path, **kwargs) -> str:
-        #url = "{protocol}://ergast.com/api/f1/{path}".format(
-        #    protocol="https" if self.secure else "http", path=path.format(**kwargs)
-        #)
-        url = ""
+        url = "{protocol}://ergastcache.husky-technologies.com/f1/{path}".format(
+            protocol="http" if self.secure else "http", path=path.format(**kwargs)
+        )
         return url
         
 class FormulaOneSensor(Entity):
