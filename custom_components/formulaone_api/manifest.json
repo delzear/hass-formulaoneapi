@@ -1,6 +1,6 @@
 {
   "domain": "formulaone_api",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "name": "Formula One API",
   "documentation": "https://github.com/delzear/formulaone_api",
   "dependencies": [],
