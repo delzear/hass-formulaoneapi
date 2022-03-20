@@ -9,14 +9,14 @@ type: markdown
 content: >-
   {% set nr = states.sensor.formula_one_sensor.attributes.next_race  %} {% if
   not(nr == None) %}  <h2><img height="25"
-  src="https://www.countries-ofthe-world.com/flags-normal/flag-of-{{nr.Circuit.Location.country}}.png">&nbsp; 
+  src="https://www.countries-ofthe-world.com/flags-normal/flag-of-{{nr.Circuit.Location.country | replace(" ","-")}}.png">&nbsp; 
   {{ nr.round }} :  {{ nr.raceName }}</h2>
 
   <small>Local time : {{ as_timestamp(nr.date + ' ' + nr.time) |
   timestamp_custom("%H:%M on %y-%m-%D ") }}</small>
 
   <a target="_new" href="{{nr.Circuit.url}}">
-    <img width="100%" src="https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/{{nr.Circuit.Location.country}}_Circuit.png.transform/7col/image.png">
+    <img width="100%" src="https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/{{nr.Circuit.Location.country | replace(" ","-")}}_Circuit.png.transform/7col/image.png">
   </a> <br> 
 
   Season: {{nr.season}}<br>
