@@ -16,7 +16,7 @@ content: >-
   timestamp_custom("%H:%M on %y-%m-%D ") }}</small>
 
   <a target="_new" href="{{nr.Circuit.url}}">
-    <img width="100%" src="https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/{{nr.Circuit.Location.country | replace(" ","-")}}_Circuit.png.transform/7col/image.png">
+    <img width="100%" src="https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/{{nr.Circuit.Location.country | replace(" ","_")}}_Circuit.png.transform/7col/image.png">
   </a> <br> 
 
   Season: {{nr.season}}<br>
