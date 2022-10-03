@@ -205,6 +205,7 @@ class FormulaOneSensor(Entity):
 
         # # Merge all attributes to a single dict.
         all_attr = {
+            'last_update': now,
             'next_race': next_race,
             'races': races['MRData']['RaceTable']['Races'],
             'drivers': drivers['MRData']['StandingsTable']['StandingsLists'][0]['DriverStandings'],
