@@ -178,7 +178,7 @@ class FormulaOneSensor(Entity):
         polling_delta = self.set_polling()
         nexttime = nowtime + polling_delta
         # Setup timer to run again at polling delta
-        # track_point_in_time(self.hass, self.timer, nexttime)
+        track_point_in_time(self.hass, self.timer, nexttime)
 
     def get_race_data(self):
         """Get the latest data from the http://ergast.com/ via a custom formulaonepy."""
