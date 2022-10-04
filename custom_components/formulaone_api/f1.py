@@ -46,7 +46,7 @@ class F1(object):
         return choice(**kwargs)
 
     def _build_url(self, path, **kwargs) -> str:
-        url = "https://ergast.com/api/f1/{path}".format(
+        url = "{protocol}://ergastcache.mobiusmedia.ca/f1/{path}".format(
             protocol="http" if self.secure else "http", path=path.format(**kwargs)
         )
         return url
