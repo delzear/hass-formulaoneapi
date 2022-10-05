@@ -7,7 +7,7 @@ To display the next race:
 ```
 type: markdown
 content: >-
-  {% set nr = states.sensor.formula_one_sensor.attributes.next_race  %} {% if
+  {% set nr = states.sensor.formula_one_sensor_races.attributes.next_race  %} {% if
   not(nr == None) %}  <h2><img height="25"
   src="https://www.countries-ofthe-world.com/flags-normal/flag-of-{{nr.Circuit.Location.country | replace(" ","-")}}.png">&nbsp; 
   {{ nr.round }} :  {{ nr.raceName }}</h2>
@@ -58,7 +58,7 @@ content: |-
       </tr>
     </thead>
     <tbody>
-  {% for driver in states.sensor.formula_one_sensor.attributes.drivers %} <tr>
+  {% for driver in states.sensor.formula_one_sensor_drivers.attributes.data %} <tr>
           <td>{{driver.position}}</td>
           <td>{{driver.Driver.code}}</td>
           <td>{{driver.Driver.givenName }} {{driver.Driver.familyName}}</td>
@@ -116,7 +116,7 @@ content: >-
       </tr>
     </thead>
     <tbody>
-  {% for driver in states.sensor.formula_one_sensor.attributes.constructors %}
+  {% for driver in states.sensor.formula_one_sensor_constructors.attributes.data %}
   <tr>
           <td>{{driver.position}}</td>
           <td>{{driver.Constructor.name }}</td>
@@ -173,7 +173,7 @@ content: |-
       </tr>
     </thead>
     <tbody>
-  {% for races in states.sensor.formula_one_sensor.attributes.races %} <tr>
+  {% for races in states.sensor.formula_one_sensor_races.attributes.data %} <tr>
           <td>{{races.round}}</td>
           <td>{{races.raceName}}</td>
           <td>{{races.date}}</td>
