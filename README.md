@@ -53,7 +53,8 @@ Display info in the front end: [frontend.md](https://github.com/delzear/hass-for
 - [x] Consume Formula One Stats API locally with the least amount of resources possible.
 - [ ] Pass information to Home Assistant as sensor data. (ex. Next game scheduled, live scores, goal description, etc.)
 - [ ] Create a "live" event platform to use as a trigger for automations.
-- [ ] Display the information in the front-end in its own Lovelace card.
+- [x] Display the information in the front-end in its own [Lovelace card](https://github.com/marcokreeft87/formulaone-card).
 - [ ] Add support for `HACS`.
+- [ ] Add notification service for qualifying, sprint and race
 ## Resources
 [The Home Assistant NHL API](https://github.com/JayBlackedOut/hass-nhlapi)
