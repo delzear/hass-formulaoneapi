@@ -8,6 +8,7 @@ import logging
 from datetime import datetime as dt
 from custom_components.formulaone_api.driverssensor import DriversSensor
 from custom_components.formulaone_api.constructorsensor import ConstructorsSensor
+from custom_components.formulaone_api.nexteventsensor import NextEventSensor
 from custom_components.formulaone_api.racessensor import RacesSensor
 from custom_components.formulaone_api.const import DEFAULT_NAME, DEFAULT_SCAN_INTERVAL
 from custom_components.formulaone_api.lastresultsensor import LastResultSensor
@@ -40,4 +41,5 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     add_entities([DriversSensor(name, scan_interval, hass)])
     add_entities([DriversSensor(name, scan_interval, hass)])
     add_entities([LastResultSensor(name, scan_interval, hass)])
+    add_entities([NextEventSensor(name, scan_interval, hass)])
         
