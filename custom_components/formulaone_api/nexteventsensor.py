@@ -23,12 +23,16 @@ class NextEventSensor(FormulaOneSensor):
         #     'last_update': now,
         #     'data': races['MRData']['RaceTable']['Races'][0]
         # }
-
-        return self.hass.states.get("sensor." + self.basename.replace(" ", "_").lower() + "_races").attributes['next_race']
+        sensor_state = self.hass.states.get("sensor." + self.basename.replace(" ", "_").lower() + "_races")
+        return sensor_state.attributes #['next_race']
 
     def set_state(self):
         """Set sensor state to race state and set polling interval."""
         next_race = self.get_next_race()
+
+        if next_race == None:
+            self._state = 'None'
+            return self._state
 
         first_practice_date = dt.strptime(next_race[FIRST_PRACTICE]['date'] + " " + next_race[FIRST_PRACTICE]['time'], PARSE_DATETIME_FORMAT)
         second_practice_date = dt.strptime(next_race[SECOND_PRACTICE]['date']+ " " + next_race[SECOND_PRACTICE]['time'], PARSE_DATETIME_FORMAT)
