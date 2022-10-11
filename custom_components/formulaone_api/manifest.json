@@ -4,6 +4,6 @@
   "name": "Formula One API",
   "documentation": "https://github.com/delzear/hass-formulaoneapi",
   "dependencies": [],
-  "codeowners": ["@delzear"],
+  "codeowners": ["@delzear", "@marcokreeft87"],
   "requirements": ["requests >=2.20"]
 }
