@@ -1,0 +1,3 @@
+tests/.coverage
+**/__pycache__/*
+.coverage
