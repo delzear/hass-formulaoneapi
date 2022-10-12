@@ -1,9 +1,10 @@
 {
   "domain": "formulaone_api",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "name": "Formula One API",
   "documentation": "https://github.com/delzear/hass-formulaoneapi",
   "dependencies": [],
-  "codeowners": ["@delzear"],
-  "requirements": ["requests >=2.20"]
+  "codeowners": ["@delzear", "@marcokreeft87"],
+  "requirements": ["requests >=2.20"],
+  "issue_tracker": "https://github.com/delzear/hass-formulaoneapi/issues"
 }

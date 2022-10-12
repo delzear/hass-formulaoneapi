@@ -43,11 +43,13 @@ The sensor will expose 3 state attributes:
 | races                  | Array of all the races of the current championship season                                 |
 | drivers                | Sorted array of all drivers of the current championship season ordered by descending points |
 | constructors           | Sorted array of all constructors of the current championship season ordered by descending points |
+| last_result            | Sorted array of the last race result                                                      |
 
 The sensor will return the following state attributes whether or not a game is in progress:
 
 ## Examples
-Display info in the front end: [frontend.md](https://github.com/delzear/hass-formulaoneapi/blob/master/frontend.md)  
+Use the [FormulaOne-Card](https://github.com/marcokreeft87/formulaone-card) for displaying the information OR
+use the markdown card: [frontend.md](https://github.com/delzear/hass-formulaoneapi/blob/master/frontend.md)
 
 ## Objectives Checklist
 - [x] Consume Formula One Stats API locally with the least amount of resources possible.
@@ -56,5 +58,6 @@ Display info in the front end: [frontend.md](https://github.com/delzear/hass-for
 - [x] Display the information in the front-end in its own [Lovelace card](https://github.com/marcokreeft87/formulaone-card).
 - [ ] Add support for `HACS`.
 - [ ] Add notification service for qualifying, sprint and race
+
 ## Resources
 [The Home Assistant NHL API](https://github.com/JayBlackedOut/hass-nhlapi)
