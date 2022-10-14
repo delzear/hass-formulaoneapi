@@ -57,7 +57,7 @@ use the markdown card: [frontend.md](https://github.com/delzear/hass-formulaonea
 - [ ] Create a "live" event platform to use as a trigger for automations.
 - [x] Display the information in the front-end in its own [Lovelace card](https://github.com/marcokreeft87/formulaone-card).
 - [ ] Add support for `HACS`.
-- [ ] Add qualifying result.
+- [ ] Add notification service for qualifying, sprint and race
 
 ## Resources
 [The Home Assistant NHL API](https://github.com/JayBlackedOut/hass-nhlapi)
