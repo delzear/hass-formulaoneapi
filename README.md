@@ -19,6 +19,11 @@ sensor:
 4. Restart Home Assistant one final time.
 ## Installation: HACS
 This method assumes you have HACS already installed.
+
+Use this button:
+ [![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=delzear&repository=hass-formulaoneapi&category=integration)
+
+_OR_ Manually
 1. In the HACS Store, click `Custom Repository` from the top right menu.
 2. Enter `delzear/hass-formulaoneapi` in the `URL` textbox and Integration in the `Category`.
 3. Click `Install`
