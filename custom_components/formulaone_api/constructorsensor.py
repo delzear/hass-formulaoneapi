@@ -17,7 +17,7 @@ class ConstructorsSensor(FormulaOneSensor):
         now = dt.now()
         constructors = f1.constructor_standings(season=now.year).json
         if constructors['MRData']['total'] == "0":
-            data = "Not yet available"
+            data = []
         else:
             data = constructors['MRData']['StandingsTable']['StandingsLists'][0]['ConstructorStandings']
 

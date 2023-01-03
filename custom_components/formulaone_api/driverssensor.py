@@ -17,7 +17,7 @@ class DriversSensor(FormulaOneSensor):
         now = dt.now()        
         drivers = f1.driver_standings(season=now.year).json
         if drivers['MRData']['total'] == "0":
-            data = "Not yet available"
+            data = []
         else:
             data = drivers['MRData']['StandingsTable']['StandingsLists'][0]['DriverStandings']
 
