@@ -5,7 +5,8 @@ Formula One API will be down for the remaining of the season while I work on a s
 Formula One API Integration Into Home Assistant: Bring live information the current season!
 
 2022-10-05 - This sensor was seperated into 4 new sensors. Please check the frontend.md to correct the visuals
-2023-01-11 - I will be shutting down the project on February 15th if nobody takes over. The cost of the server and the strain on it are too much.
+
+# 2023-01-11 - I will be shutting down the project on February 15th if nobody takes over. The cost of the server and the strain on it are too much.
 
 <a href="https://www.buymeacoffee.com/delzear"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=delzear&button_colour=FFDD00&font_colour=000000&font_family=Arial&outline_colour=000000&coffee_colour=ffffff" /></a>
 
